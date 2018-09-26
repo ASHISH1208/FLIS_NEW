@@ -1,0 +1,55 @@
+<body>
+    <header class="navbar navbar-fixed-top navbar-inverse">
+      <div class="container">
+        <nav>
+          <ul class="nav navbar-nav navbar-right">
+
+            <li><%= link_to "Home",{:controller => 'welcome', :action => 'index'}%></li>
+            <li><%= link_to 'Log out', {:controller => 'admin', :action => 'logout'}, :method => 'post' %></li>
+            <li><%= session[:a_user_id]%></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <div class="container">
+      <%= yield %>
+    </div>
+  </body>
+<center>
+
+<h1>Welcome <%= session[:a_user_id]%><h1>
+<head>  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head> 
+<h3> Approved List: </h3>
+<div class="container">
+<table class="table table-hover">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Address</th>
+        <th>Village</th> 
+        <th>Contact No</th>
+        <th>Email</th>
+        <th>Lost Info</th>
+        <th>Loss Amount</th>
+    </tr>
+    </thead>
+     <tbody>
+    <% @temp.each do |item| %>
+    <tr>
+        <td> <%= item.name %> </td>
+        <td> <%= item.address %> </td>
+        <td> <%= item.village %> </td>
+        <td> <%= item.contact_no %> </td>
+        <td> <%= item.email %> </td>
+        <td> <%= item.loss_info %> </td>
+        <td> <%= item.loss_amount %> </td>
+    </tr>
+    </tbody>
+    <% end %>
+
+</table>
+</div>

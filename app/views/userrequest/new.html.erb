@@ -1,0 +1,56 @@
+
+<body>
+    <header class="navbar navbar-fixed-top navbar-inverse">
+      <div class="container">
+        <nav>
+          <ul class="nav navbar-nav navbar-right">
+            <li><%= link_to "Home",{:controller => 'welcome', :action => 'index'}%></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <div class="container">
+      <%= yield %>
+    </div>
+  </body>
+<center>
+<h3> Enter  Your Loss Data </h3>
+<% user_request = @user_request %>
+
+<%= form_with(url:{:controller=>'userrequest',:action=>'index'}, model: user_request, local: true,method: 'post') do |form| %>
+    <% if @user_request.errors.any? %>
+        <h2><%= pluralize(@user_request.errors.count, "error") %> prohibited this found_item from being saved:</h2>
+
+        <ul>
+        <% @user_request.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+        <% end %>
+        </ul>
+    <% end %>
+
+        <%= form.label :name %> <br/>
+        <%= form.text_field :name %><br/>
+
+
+        <%= form.label :address %><br/>
+        <%= form.text_field :address %><br/>
+
+        <%= form.label :village %><br/>
+        <%= form.text_field :village %><br/>
+
+        <%= form.label :contact_no %><br/>
+        <%= form.text_field :contact_no %><br/>
+
+
+        <%= form.label :email %><br/>
+        <%= form.text_field :email %><br/>
+
+        <%= form.label :loss_info %><br/>
+        <%= form.text_area :loss_info %><br/>
+
+        <%= form.label :loss_amount %><br/>
+        <%= form.text_field :loss_amount %><br/>
+        <%= form.submit %>
+  
+<% end %>
+</center>

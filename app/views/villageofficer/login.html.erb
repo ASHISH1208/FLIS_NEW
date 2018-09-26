@@ -1,0 +1,37 @@
+<body>
+    <header class="navbar navbar-fixed-top navbar-inverse">
+      <div class="container">
+        <nav>
+          <ul class="nav navbar-nav navbar-right">
+
+            <li><%= link_to "Home",{:controller => 'welcome', :action => 'index'}%></li>
+        
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <div class="container">
+      <%= yield %>
+    </div>
+  </body>
+<center>
+<h1>Village Officer Login</h1>
+<% if (flash[:msg]) %>
+<h2> <%= flash[:msg] %> </h2>
+ <% end %>
+
+
+<%= form_tag({controller: "villageofficer", action: "index"}, method: "post") do %>
+  <%= label_tag(:user_id, "Village") %>
+  <%= text_field_tag(:user_id) %>
+
+    <br/>
+
+  <%= label_tag(:password, "Password") %>
+  <%= password_field_tag(:password) %>
+
+    <br/> <br/>
+
+  <%= submit_tag("Login") %>
+<% end %>
+</center>

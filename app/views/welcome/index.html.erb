@@ -1,0 +1,29 @@
+<body>
+    <header class="navbar navbar-fixed-top navbar-inverse">
+      <div class="container">
+        <nav>
+          <ul class="nav navbar-nav navbar-right">
+            <li><%= link_to "Home",{:controller => 'welcome', :action => 'index'}%></li>
+            <li><%=link_to "Admin Login",:controller=>'admin',:action=>'login'%></li>
+            <li><%= link_to "Village Officer Login",:controller=>'villageofficer',:action=>'login'  %></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <div class="container">
+      <%= yield %>
+    </div>
+  </body>
+<center>
+	<div class="center jumbotron">
+<h1>
+ FLOOD LOSS INFORMATION SYSTEM</h1>
+ <h2>
+    <a href="https://en.wikipedia.org/wiki/2018_Kerala_floods">Flood Situation in kerala state</a>
+    Wiki Information
+  </h2>	
+
+
+ <%= link_to "Guest User",'/guest_index',class: "btn btn-lg btn-info" %>
+
+</div>

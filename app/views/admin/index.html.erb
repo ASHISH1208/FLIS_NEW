@@ -1,0 +1,22 @@
+<body>
+    <header class="navbar navbar-fixed-top navbar-inverse">
+      <div class="container">
+        <nav>
+          <ul class="nav navbar-nav navbar-right">
+
+            <li><%= link_to "Home",{:controller => 'welcome', :action => 'index'}%></li>
+            <li><%= link_to 'Log out', {:controller => 'admin', :action => 'logout'}, :method => 'post' %></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <div class="container">
+      <%= yield %>
+    </div>
+  </body>
+<h1>Welcome <%= session[:a_user_id]%> </h1>
+<!--<%= link_to "Generate List",'/admincheck',class: "btn btn-lg btn-info",:method =>'post'%>-->
+<center>
+<%= link_to 'Generate List',{:controller => 'admin', :action => 'check'},class: "btn btn-lg btn-info", :method => 'post' %>
+<%= link_to 'Generate Graph',{:controller => 'admin', :action => 'generate_graph'},class: "btn btn-lg btn-info", :method => 'post' %> <br/>
+</center>

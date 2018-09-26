@@ -1,0 +1,78 @@
+<body>
+    <header class="navbar navbar-fixed-top navbar-inverse">
+      <div class="container">
+        <nav>
+          <ul class="nav navbar-nav navbar-right">
+
+            <li><%= link_to "Home",{:controller => 'welcome', :action => 'index'}%></li>
+            <li><%= link_to 'Log out', {:controller => 'admin', :action => 'logout'}, :method => 'post' %></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <div class="container">
+      <%= yield %>
+    </div>
+  </body>
+<body>
+    <header class="navbar navbar-fixed-top navbar-inverse">
+      <div class="container">
+        <nav>
+          <ul class="nav navbar-nav navbar-right">
+
+            <li><%= link_to "Home",{:controller => 'welcome', :action => 'index'}%></li>
+            <li><%= link_to 'Log out', {:controller => 'villageofficer', :action => 'logout'}, :method => 'post' %></li>
+            <li><%= @officer.name %></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <div class="container">
+      <%= yield %>
+    </div>
+  </body>
+<h1>Pending Request For <%= session[:a_user_id]%> </h1>
+<head>  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>    
+<br/>
+<h2>Welcome <%= @officer.name%>
+<h3> Pending Request List: </h3>
+<div class="container">
+<table class="table table-hover">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Address</th>
+        <th>Village</th> 
+        <th>Contact No</th>
+        <th>Email</th>
+        <th>Lost Info</th>
+        <th>Loss Amount</th>
+        <th>Loss Approve</th>
+        <th>Loss Reject</th>
+    </tr>
+    </thead>
+     <tbody>
+    <% @pending_requests.each do |item| %>
+    <tr>
+        <td> <%= item.name %> </td>
+        <td> <%= item.address %> </td>
+        <td> <%= item.village %> </td>
+        <td> <%= item.contact_no %> </td>
+        <td> <%= item.email %> </td>
+        <td> <%= item.loss_info %> </td>
+        <td> <%= item.loss_amount %> </td>
+        <td> <%= link_to 'Approve', {:controller => 'villageofficer', :action => 'approve',:request_id=>item.contact_no}, :method => 'post' %> </td>
+        <td><%= link_to 'Reject', {:controller => 'villageofficer', :action => 'reject',:request_id=>item.contact_no}, :method => 'post' %></td>
+    </tr>
+    </tbody>
+    <% end %>
+
+</table>
+<%= link_to 'Generate List', {:controller => 'villageofficer', :action => 'generate_list',
+                              :request_id=>'#{@officer.village}'}, :method => 'post',class: "btn btn-lg btn-info" %> 
+</div>
+

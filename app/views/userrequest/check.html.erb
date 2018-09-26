@@ -1,0 +1,27 @@
+<body>
+    <header class="navbar navbar-fixed-top navbar-inverse">
+      <div class="container">
+        <nav>
+          <ul class="nav navbar-nav navbar-right">
+            <li><%= link_to "Home",{:controller => 'welcome', :action => 'index'}%></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <div class="container">
+      <%= yield %>
+    </div>
+  </body>
+<center>
+<h1>Check Status</h1>
+<% if (flash[:msg]) %>
+<h2> <%= flash[:msg] %> </h2>
+ <% end %>
+<%= form_tag("show", method: "get") do %>
+  <%= label_tag(:q, "Contact No:") %>
+  <%= text_field_tag(:q) %>
+  <%= submit_tag("Search") %>
+<% end %>
+
+</center>
+

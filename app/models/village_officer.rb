@@ -1,0 +1,2 @@
+class VillageOfficer < ApplicationRecord
+end
